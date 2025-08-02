@@ -1,0 +1,658 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.269 0 0);
+  --input: oklch(0.269 0 0);
+  --ring: oklch(0.439 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-5);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Inter", sans-serif;
+  }
+}
+
+/* Font classes */
+.font-orbitron {
+  font-family: "Orbitron", sans-serif;
+  font-weight: 900;
+}
+
+.font-exo {
+  font-family: "Exo 2", sans-serif;
+}
+
+.font-space {
+  font-family: "Space Grotesk", sans-serif;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ef4444 0%, #dc2626 50%, #b91c1c 100%);
+  border-radius: 4px;
+  border: 1px solid #000;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #f87171 0%, #ef4444 50%, #dc2626 100%);
+}
+
+/* Hip-hop animations */
+@keyframes glow-subtle {
+  0%,
+  100% {
+    text-shadow: 0 0 10px #ef4444, 0 0 15px #ef4444, 0 0 20px #ef4444;
+    transform: scale(1);
+  }
+  50% {
+    text-shadow: 0 0 5px #ef4444, 0 0 10px #ef4444, 0 0 15px #ef4444;
+    transform: scale(1.01);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+  66% {
+    transform: translateY(-5px) rotate(-1deg);
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes particle {
+  0% {
+    opacity: 0;
+    transform: translateY(0px) scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-100px) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-200px) scale(0);
+  }
+}
+
+@keyframes gradient-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Hip-hop specific classes */
+.animate-glow-subtle {
+  animation: glow-subtle 4s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
+}
+
+.particle {
+  animation: particle 4s ease-in-out infinite;
+}
+
+.hip-hop-text {
+  background: linear-gradient(135deg, #ef4444 0%, #f87171 25%, #ef4444 50%, #dc2626 75%, #ef4444 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 6s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px rgba(239, 68, 68, 0.5));
+}
+
+/* Street-style cards */
+.street-card {
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(20px);
+  border: 2px solid rgba(239, 68, 68, 0.15);
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.street-card::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #ef4444, transparent, #ef4444);
+  border-radius: 15px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.street-card:hover::before {
+  opacity: 0.3;
+}
+
+/* Enhanced hip-hop button */
+.hip-hop-button {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  border: 2px solid rgba(239, 68, 68, 0.5);
+  color: white;
+  font-weight: 800;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+  position: relative;
+  overflow: hidden;
+  font-family: "Orbitron", sans-serif;
+}
+
+.hip-hop-button:hover {
+  background: linear-gradient(135deg, #f87171, #ef4444);
+  border-color: rgba(239, 68, 68, 0.8);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(239, 68, 68, 0.4);
+}
+
+.hip-hop-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: 0.5s;
+}
+
+.hip-hop-button:hover::before {
+  left: 100%;
+}
+
+.street-button {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  border: none;
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.4), 0 0 40px rgba(239, 68, 68, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.street-button:hover {
+  box-shadow: 0 0 30px rgba(239, 68, 68, 0.6), 0 0 60px rgba(239, 68, 68, 0.4);
+  transform: scale(1.05);
+}
+
+.street-tag {
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Street borders */
+.street-border {
+  border: 2px solid #ef4444;
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.3), inset 0 0 10px rgba(239, 68, 68, 0.1);
+  background: transparent;
+  color: #ef4444;
+  transition: all 0.3s ease;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  position: relative;
+  overflow: hidden;
+}
+
+.street-border:hover {
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.5), 0 0 30px rgba(239, 68, 68, 0.3), inset 0 0 20px rgba(239, 68, 68, 0.2);
+  color: white;
+  background: rgba(239, 68, 68, 0.1);
+  transform: translateY(-2px);
+}
+
+.street-border::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 200%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: rotate(30deg);
+  transition: all 0.3s;
+}
+
+.street-border:hover::after {
+  left: 100%;
+}
+
+/* Stylish Play Button */
+.stylish-play-button {
+  background: transparent;
+  border: none;
+  color: white;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  position: relative;
+  overflow: hidden;
+  font-family: "Orbitron", sans-serif;
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.5), 0 0 40px rgba(239, 68, 68, 0.3), inset 0 0 20px rgba(255, 255, 255, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+}
+
+.stylish-play-button:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 0 30px rgba(239, 68, 68, 0.8), 0 0 60px rgba(239, 68, 68, 0.5), 0 10px 30px rgba(0, 0, 0, 0.3), inset 0
+    0 30px rgba(255, 255, 255, 0.2);
+}
+
+.stylish-play-button:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+/* Enhanced transitions */
+* {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+/* Selection styling */
+::selection {
+  background: rgba(239, 68, 68, 0.4);
+  color: white;
+}
+
+/* Focus styles */
+*:focus {
+  outline: 2px solid #ef4444;
+  outline-offset: 2px;
+}
+
+/* Audio visualizer */
+.audio-visualizer {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 20px;
+}
+
+.audio-visualizer div {
+  width: 3px;
+  background: white;
+  border-radius: 2px;
+}
+
+/* Line clamp utility */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Responsive improvements */
+@media (max-width: 640px) {
+  .font-orbitron {
+    font-size: 90%;
+  }
+
+  .hip-hop-text {
+    font-size: 3rem;
+  }
+
+  .street-card {
+    padding: 1rem;
+  }
+
+  /* Reduce section padding on mobile */
+  section {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  section {
+    padding-top: 4rem !important;
+    padding-bottom: 4rem !important;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  section {
+    padding-top: 5rem !important;
+    padding-bottom: 5rem !important;
+  }
+}
+
+/* Additional responsive improvements for specific sections */
+@media (max-width: 480px) {
+  /* Extra small devices */
+  .hip-hop-text {
+    font-size: 2.5rem !important;
+  }
+
+  section {
+    padding-top: 2.5rem !important;
+    padding-bottom: 2.5rem !important;
+  }
+
+  .street-card {
+    padding: 0.75rem !important;
+  }
+
+  /* Prevent text overflow on very small screens */
+  .font-orbitron {
+    word-break: break-word;
+  }
+}
+
+@media (max-width: 360px) {
+  /* Very small devices */
+  .hip-hop-text {
+    font-size: 2rem !important;
+  }
+
+  .font-orbitron {
+    font-size: 85% !important;
+  }
+}
+
+/* Improve button responsiveness */
+.street-button {
+  min-width: 60px;
+  min-height: 60px;
+}
+
+@media (max-width: 640px) {
+  .street-button {
+    min-width: 64px;
+    min-height: 64px;
+  }
+}
+
+/* Better text wrapping for social handles */
+.break-all {
+  word-break: break-all;
+  hyphens: auto;
+}
+
+/* Ensure platform links don't overflow */
+@media (max-width: 640px) {
+  .platform-link {
+    min-width: 120px;
+    max-width: 100%;
+  }
+}
+
+/* Improve spacing for mobile */
+@media (max-width: 768px) {
+  .section-spacing {
+    margin-bottom: 2rem;
+  }
+
+  .section-spacing:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* Prevent horizontal scroll */
+body {
+  overflow-x: hidden;
+}
+
+/* Ensure images don't overflow */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Better mobile touch targets */
+@media (max-width: 768px) {
+  button,
+  a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Enhanced mobile text sizing */
+@media (max-width: 640px) {
+  .hero-title {
+    font-size: 4rem !important;
+    line-height: 0.8;
+  }
+
+  .hero-subtitle {
+    font-size: 1.5rem !important;
+  }
+
+  .hero-description {
+    font-size: 1.125rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 3.5rem !important;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem !important;
+  }
+
+  .hero-description {
+    font-size: 1rem !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero-title {
+    font-size: 3rem !important;
+  }
+
+  .hero-subtitle {
+    font-size: 1.125rem !important;
+  }
+}
+
+/* Button glitch animation */
+@keyframes glitch {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-2px);
+  }
+  40% {
+    transform: translateX(2px);
+  }
+  60% {
+    transform: translateX(-1px);
+  }
+  80% {
+    transform: translateX(1px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.stylish-play-button:hover {
+  animation: glitch 0.3s ease-in-out;
+}
+
+/* Corner accent animation */
+@keyframes corner-glow {
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.stylish-play-button:hover .corner-accent {
+  animation: corner-glow 2s ease-in-out infinite;
+}
